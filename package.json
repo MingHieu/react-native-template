@@ -1,0 +1,8 @@
+ {
+  "name": "react-native-initial-template",
+  "version": "0.0.1",
+  "description": "React Native Template",
+  "repository": "https://github.com/MingHieu/react-native-template",
+  "author": "MingHieu <hieubeo0612@gmail.com>",
+  "license": "MIT"
+}
