@@ -29,12 +29,17 @@
     "@babel/core": "^7.18.2",
     "@babel/runtime": "^7.18.3",
     "@react-native-community/eslint-config": "^3.0.2",
+    "@types/jest": "^28.1.6",
+    "@types/react": "^18.0.15",
+    "@types/react-native": "^0.69.3",
+    "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^28.1.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.16.0",
     "jest": "^28.1.0",
     "metro-react-native-babel-preset": "^0.71.0",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.7.4"
   },
   "jest": {
     "preset": "react-native"
