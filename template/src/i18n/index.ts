@@ -6,13 +6,13 @@ const languageDetector = {
   type: 'languageDetector',
   async: true,
   // default language app
-  detect: cb => cb('vi'),
+  detect: (cb: Function) => cb('vi'),
   init: () => {},
   cacheUserLanguage: () => {},
 };
 
 i18n
-  .use(languageDetector)
+  .use<any>(languageDetector)
   .use(initReactI18next)
   .init({
     resources: resources.default,
