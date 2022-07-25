@@ -1,23 +1,14 @@
 import {Dimensions} from 'react-native';
 
-const WIDTH = Dimensions.get('window').width;
-const HEIGHT = Dimensions.get('window').height;
-const width = WIDTH < HEIGHT ? WIDTH : HEIGHT;
-const height = WIDTH > HEIGHT ? WIDTH : HEIGHT;
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const _mpw = (value: number) => {
-  const current = width > 500 ? (value * width) / 450 : (value * width) / 375;
-  return current;
-};
-
-const _mph = (value: number) => {
-  const current = (value * height) / 667;
-  return current;
-};
+const PADDING = 16;
+const MARGIN = 9;
 
 export default {
-  WIDTH,
-  HEIGHT,
-  _mph,
-  _mpw,
+  SCREEN_WIDTH,
+  SCREEN_HEIGHT,
+  PADDING,
+  MARGIN,
 };

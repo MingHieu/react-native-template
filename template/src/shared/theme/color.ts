@@ -1,9 +1,10 @@
 export default {
-  WHITE: '#FFF',
-  BLACK: '#000',
-  BLACK_OPACITY_6: 'rgba(0,0,0,.6)',
-  WHITE_OPACITY_6: 'rgba(255,255,255,.6)',
-  PRIMARY: '#ff0000',
-  SECONDARY: '#ff0000',
-  TRANSPARENT: 'transparent',
+  blue: '#006CFF',
+  gray: '#666666',
+  red: '#FF003C',
+  green: '#63ad0e',
+  orange: '#ffc000',
+  violet: ' #7800ff',
+  pink: '#ff56b1',
+  mint: '#00ffde',
 };

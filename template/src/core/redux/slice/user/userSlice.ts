@@ -1,11 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {IUserState} from './types';
 
-export type UserState = {
-  token: string;
-  userInfor: {};
-};
-
-const initialState: UserState = {
+const initialState: IUserState = {
   token: '',
   userInfor: {},
 };
@@ -14,7 +10,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setCurrentUser: (state, action: PayloadAction<UserState>) => {
+    setCurrentUser: (state, action: PayloadAction<IUserState>) => {
       const currentUser = action.payload;
       return currentUser;
     },
@@ -25,4 +21,3 @@ export const userSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {setCurrentUser, setDefaultUser} = userSlice.actions;
 
-export default userSlice.reducer;
