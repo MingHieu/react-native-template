@@ -23,7 +23,8 @@ npx react-native init MyApp --template https://github.com/MingHieu/react-native-
 - I18next
 - React-native-vector-icons
 - Async Storage
-
+- React-native-svg
+- Typescript
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
