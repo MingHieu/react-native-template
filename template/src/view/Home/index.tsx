@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Text, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { useAppSelector} from '~shared/hooks';
+import {LeftArrow} from '~assets';
+import {useAppSelector} from '~shared/hooks';
 
 export const Home = () => {
   const {t} = useTranslation();
@@ -16,6 +17,7 @@ export const Home = () => {
     <View>
       <Text>{t('Home:Greeting')}</Text>
       <AntDesign name="home" />
+      <LeftArrow />
     </View>
   );
 };
