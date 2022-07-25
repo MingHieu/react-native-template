@@ -1,12 +1,12 @@
-import {baseURL} from './api.config';
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
+import {API_URL} from '~config';
 
 class ApiService {
   api: AxiosInstance;
 
   constructor() {
     this.api = axios.create({
-      baseURL: baseURL,
+      baseURL: API_URL,
       timeout: 5000,
       headers: {
         'Content-Type': 'application/json',
