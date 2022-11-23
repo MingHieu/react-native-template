@@ -1,4 +1,4 @@
-import {ETheme, IThemeSliceProps} from '~core/redux/slice/theme/types';
+import {ETheme, IThemeSliceProps} from '~types';
 
 export const LIGHT_SCHEME: IThemeSliceProps = {
   theme: ETheme.light,
