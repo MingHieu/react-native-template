@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {IThemeColor} from '~core/redux/slice/theme/types';
+import {IThemeColor} from '~types';
 import {useAppSelector} from '~shared/hooks';
 import {typo} from '~shared/theme/index';
 

@@ -1,16 +1,15 @@
-import {IThemeSliceProps} from './types';
+import {IThemeSliceProps} from '~types';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {LIGHT_SCHEME} from '~shared/theme';
 
 const initialState: IThemeSliceProps = LIGHT_SCHEME;
 
 export const themeSlice = createSlice({
-  name: 'user',
+  name: 'theme',
   initialState,
   reducers: {
-    setTheme: (state, action: PayloadAction<IThemeSliceProps>) => {
-      return action.payload;
-    },
+    setTheme: (state, action: PayloadAction<IThemeSliceProps>) =>
+      action.payload,
   },
 });
 
