@@ -1,2 +1,2 @@
-export * from './theme/themeSlice';
-export * from './user/userSlice';
+export * from './themeSlice';
+export * from './userSlice';

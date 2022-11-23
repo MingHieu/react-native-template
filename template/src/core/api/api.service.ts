@@ -1,5 +1,6 @@
-import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
-import {API_URL} from '~config';
+import {OperationsByMethodAndPath, PathFor} from './helpers/index';
+import axios, {AxiosInstance, AxiosPromise, AxiosRequestConfig} from 'axios';
+import {API_URL, API_PREFIX} from '~config';
 import {UserTokenStorage} from '~core/storage/storage';
 
 class ApiService {
@@ -7,7 +8,7 @@ class ApiService {
 
   constructor() {
     this.api = axios.create({
-      baseURL: API_URL,
+      baseURL: API_URL + API_PREFIX,
       timeout: 5000,
       headers: {
         'Content-Type': 'application/json',
@@ -17,11 +18,14 @@ class ApiService {
     // Add a request interceptor
     this.api.interceptors.request.use(
       async function (config) {
+        config.headers = config.headers ?? {};
         // Do something before request is sent
-        if (config.headers['Authorization']) return config;
+        if (config.headers.Authorization) {
+          return config;
+        }
         const token = await UserTokenStorage.get();
         if (token) {
-          config.headers['Authorization'] = token;
+          config.headers.Authorization = token;
         }
         return config;
       },
@@ -46,7 +50,11 @@ class ApiService {
     );
   }
 
-  get(url: string, config: AxiosRequestConfig = {}, queryParams = {}) {
+  get<TPath extends PathFor<'GET'>>(
+    url: TPath,
+    queryParams?: OperationsByMethodAndPath<'GET', TPath>['queryParams'],
+    config: AxiosRequestConfig = {},
+  ): AxiosPromise<OperationsByMethodAndPath<'GET', TPath>['result']> {
     return this.api({
       url: url,
       method: 'GET',
@@ -55,44 +63,50 @@ class ApiService {
     });
   }
 
-  post(url, data, config: AxiosRequestConfig = {}, queryParams = {}) {
+  post<TPath extends PathFor<'POST'>>(
+    url: TPath,
+    params: OperationsByMethodAndPath<'POST', TPath>['params'],
+    queryParams?: OperationsByMethodAndPath<'POST', TPath>['queryParams'],
+    config: AxiosRequestConfig = {},
+  ): AxiosPromise<OperationsByMethodAndPath<'POST', TPath>['result']> {
     return this.api({
       url: url,
       method: 'POST',
+      data: params,
       params: queryParams,
-      data: data,
       ...config,
     });
   }
 
-  put(url, data, config: AxiosRequestConfig = {}, queryParams = {}) {
-    return this.api({
-      url: url,
-      method: 'PUT',
-      params: queryParams,
-      data: data,
-      ...config,
-    });
-  }
+  // put<TPath extends PathFor<'PUT'>>(
+  //   url: TPath,
+  //   params: OperationsByMethodAndPath<'PUT', TPath>['params'],
+  //   queryParams?: OperationsByMethodAndPath<'PUT', TPath>['queryParams'],
+  //   config: AxiosRequestConfig = {},
+  // ): AxiosPromise<OperationsByMethodAndPath<'PUT', TPath>['result']> {
+  //   return this.api({
+  //     url: url,
+  //     method: 'PUT',
+  //     data: params,
+  //     params: queryParams,
+  //     ...config,
+  //   });
+  // }
 
-  patch(url, data, config: AxiosRequestConfig = {}, queryParams = {}) {
-    return this.api({
-      url: url,
-      method: 'PATCH',
-      params: queryParams,
-      data: data,
-      ...config,
-    });
-  }
-
-  delete(url, config: AxiosRequestConfig = {}, queryParams = {}) {
-    return this.api({
-      url: url,
-      method: 'DELETE',
-      params: queryParams,
-      ...config,
-    });
-  }
+  // delete<TPath extends PathFor<'DELETE'>>(
+  //   url: TPath,
+  //   params?: OperationsByMethodAndPath<'DELETE', TPath>['params'],
+  //   queryParams?: OperationsByMethodAndPath<'DELETE', TPath>['queryParams'],
+  //   config: AxiosRequestConfig = {},
+  // ): AxiosPromise<OperationsByMethodAndPath<'DELETE', TPath>['result']> {
+  //   return this.api({
+  //     url: url,
+  //     method: 'DELETE',
+  //     data: params,
+  //     params: queryParams,
+  //     ...config,
+  //   });
+  // }
 }
 
 export const Request = new ApiService();
