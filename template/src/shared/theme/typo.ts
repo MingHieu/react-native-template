@@ -1,8 +1,8 @@
 import {TextStyle} from 'react-native';
 
 export const fontTheme = {
-  primary: '',
-  secondary: '',
+  primary: 'sans-serif',
+  secondary: 'sans-serif',
 };
 
 export default {
