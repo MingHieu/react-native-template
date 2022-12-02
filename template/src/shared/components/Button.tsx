@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import React, { FC } from 'react';
 import { useAppSelector } from '~shared/hooks';
-import { CTText } from './CTText';
+import { AppText } from './AppText';
 
 interface IProps {
   label: string;
@@ -22,14 +22,14 @@ export const CustomButton: FC<IProps> = (props) => {
       onPress={onPress}
       disabled={disabled}
     >
-      <CTText
+      <AppText
         style={{
           color: disabled ? '#797C7B' : color.on_primary,
           ...styles.label,
         }}
       >
         {label}
-      </CTText>
+      </AppText>
     </TouchableOpacity>
   );
 };

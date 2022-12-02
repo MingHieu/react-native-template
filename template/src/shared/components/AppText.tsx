@@ -7,7 +7,7 @@ interface IProps {
   style?: TextStyle;
 }
 
-export const CustomText: FC<IProps> = (props) => {
+export const AppText: FC<IProps> = (props) => {
   return (
     <Text
       style={{

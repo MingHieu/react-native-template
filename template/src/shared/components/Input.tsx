@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import { useAppSelector } from '~shared/hooks';
-import { CTText } from './CTText';
+import { AppText } from './AppText';
 import { COLOR } from '~shared/theme';
 
 interface IProps {
@@ -52,9 +52,9 @@ export const CTInput = forwardRef<CTInputHandle, IProps>((props, ref) => {
 
   return (
     <View style={styles.container}>
-      <CTText style={{ color: invalid ? COLOR.red : color.primary }}>
+      <AppText style={{ color: invalid ? COLOR.red : color.primary }}>
         {label}
-      </CTText>
+      </AppText>
       <TextInput
         onChangeText={(text) => (inputRef.current = text)}
         style={{
@@ -62,7 +62,7 @@ export const CTInput = forwardRef<CTInputHandle, IProps>((props, ref) => {
           borderBottomColor: invalid ? COLOR.red : '#CDD1D0',
         }}
       />
-      {invalid && <CTText style={styles.invalidText}>{invalidText}</CTText>}
+      {invalid && <AppText style={styles.invalidText}>{invalidText}</AppText>}
     </View>
   );
 });
