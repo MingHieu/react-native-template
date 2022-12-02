@@ -1,29 +1,29 @@
-import {TextStyle} from 'react-native';
+import { TextStyle } from 'react-native';
 
 export const fontTheme = {
   primary: 'sans-serif',
   secondary: 'sans-serif',
 };
 
-export default {
+export const TYPO = {
   h1: {
     fontSize: 58,
-    fontWeight: '800',
-    fontFamily: fontTheme.primary,
+    fontWeight: '900',
   } as TextStyle,
   h2: {
     fontSize: 46,
-    fontWeight: '700',
-    fontFamily: fontTheme.primary,
+    fontWeight: '800',
   } as TextStyle,
   h3: {
     fontSize: 32,
+    fontWeight: '700',
+  } as TextStyle,
+  h4: {
+    fontSize: 20,
     fontWeight: '600',
-    fontFamily: fontTheme.primary,
   } as TextStyle,
   p: {
     fontSize: 14,
     fontWeight: '500',
-    fontFamily: fontTheme.primary,
   } as TextStyle,
 };

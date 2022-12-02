@@ -81,6 +81,6 @@ export const WHATEVER_SCHEME: IThemeSliceProps = {
   },
 };
 
-export {default as color} from './color';
-export {default as typo} from './typo';
-export {default as size} from './size';
+export * from './color';
+export * from './typo';
+export * from './size';

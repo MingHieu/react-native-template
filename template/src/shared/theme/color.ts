@@ -1,4 +1,5 @@
-export default {
+export const COLOR = {
+  // basic color
   blue: '#006CFF',
   gray: '#666666',
   red: '#FF003C',
@@ -7,4 +8,6 @@ export default {
   violet: ' #7800ff',
   pink: '#ff56b1',
   mint: '#00ffde',
+
+  // custom color
 };
