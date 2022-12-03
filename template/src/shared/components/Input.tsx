@@ -13,17 +13,12 @@ interface IProps {
   label: string;
 }
 
-export interface CTInputHandle {
-  setStatus: (status: CTInputStatus, text?: string) => void;
+export interface CustomInputHandle {
+  setStatus: (status: 'normal' | 'invalid', text?: string) => void;
   getValue(): string;
 }
 
-export enum CTInputStatus {
-  normal = 0,
-  invalid = 1,
-}
-
-export const CTInput = forwardRef<CTInputHandle, IProps>((props, ref) => {
+export const CustomInput = forwardRef<CustomInputHandle, IProps>((props, ref) => {
   const { label } = props;
   const { color } = useAppSelector((state) => state.theme);
   const [invalid, setInvalid] = useState(false);
@@ -32,14 +27,14 @@ export const CTInput = forwardRef<CTInputHandle, IProps>((props, ref) => {
 
   useImperativeHandle(ref, () => ({ setStatus, getValue }), []);
 
-  const setStatus: CTInputHandle['setStatus'] = (status, text) => {
+  const setStatus: CustomInputHandle['setStatus'] = (status, text) => {
     switch (status) {
-      case CTInputStatus.invalid:
+      case 'normal':
         setInvalid(true);
         setInvalidText(text);
         break;
 
-      case CTInputStatus.normal:
+      case 'invalid':
         setInvalid(false);
         setInvalidText('');
         break;
