@@ -1,16 +1,18 @@
-import {Endpoints} from '../Endpoints';
+import { Endpoints } from '../Endpoints';
 
 type KeyOfUnion<T> = T extends T ? keyof T : never;
 
-type GetParams<T> = T extends (...args: any) => any ? Parameters<T>[0] : never;
-type GetQueryParams<T> = T extends (...args: any) => any
+export type GetParams<T> = T extends (...args: any) => any
+  ? Parameters<T>[0]
+  : never;
+export type GetQueryParams<T> = T extends (...args: any) => any
   ? Parameters<T>[1]
   : never;
 type GetResult<T> = T extends (...args: any) => any ? ReturnType<T> : never;
 
 type Operations<
   TPath extends keyof Endpoints = keyof Endpoints,
-  TMethod extends KeyOfUnion<Endpoints[TPath]> = KeyOfUnion<Endpoints[TPath]>,
+  TMethod extends KeyOfUnion<Endpoints[TPath]> = KeyOfUnion<Endpoints[TPath]>
 > = TPath extends keyof Endpoints
   ? TMethod extends KeyOfUnion<Endpoints[TPath]>
     ? {
@@ -31,10 +33,10 @@ type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 export type PathFor<TMethod extends Method> = Extract<
   Operations,
-  {method: TMethod}
+  { method: TMethod }
 >['path'];
 
 export type OperationsByMethodAndPath<
   TMethod extends Method,
-  TPath extends PathFor<TMethod>,
-> = Extract<Operations, {path: TPath; method: TMethod}>;
+  TPath extends PathFor<TMethod>
+> = Extract<Operations, { path: TPath; method: TMethod }>;

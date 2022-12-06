@@ -1,8 +1,10 @@
-import {Request} from './api.service';
+import { Request } from './api.service';
+import { GetParams } from './helpers';
+import { Endpoints } from './endpoints';
 
 const Api = {
-  login: (username, password) =>
-    Request.post('auth/login', {username, password}),
+  login: (props: GetParams<Endpoints['auth/login']['POST']>) =>
+    Request.post('auth/login', props),
 };
 
 export default Api;
