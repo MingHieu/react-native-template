@@ -3,10 +3,10 @@ import { Endpoints } from '../Endpoints';
 type KeyOfUnion<T> = T extends T ? keyof T : never;
 
 export type GetParams<T> = T extends (...args: any) => any
-  ? Parameters<T>[0]
+  ? Parameters<T>[0]['params']
   : never;
 export type GetQueryParams<T> = T extends (...args: any) => any
-  ? Parameters<T>[1]
+  ? Parameters<T>[0]['queryParams']
   : never;
 type GetResult<T> = T extends (...args: any) => any ? ReturnType<T> : never;
 
@@ -21,9 +21,7 @@ type Operations<
         params: TMethod extends 'GET'
           ? never
           : GetParams<Endpoints[TPath][TMethod]>;
-        queryParams: TMethod extends 'GET'
-          ? GetParams<Endpoints[TPath][TMethod]>
-          : GetQueryParams<Endpoints[TPath][TMethod]>;
+        queryParams: GetQueryParams<Endpoints[TPath][TMethod]>;
         result: GetResult<Endpoints[TPath][TMethod]>;
       }
     : never
