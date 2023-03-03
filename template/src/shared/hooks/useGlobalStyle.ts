@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { IThemeColor } from '~types';
 import { useAppSelector } from './useAppSelector';
-import { typo } from '~shared/theme/index';
+import { TYPO } from '~shared/theme';
 
 interface IGlobalStyleProps {
   color: IThemeColor;
@@ -17,13 +17,13 @@ const getGlobalStyles = (props: IGlobalStyleProps) => {
       backgroundColor: color.background,
     },
     title: {
-      ...typo.h2,
+      ...TYPO.h2,
     },
     label: {
-      ...typo.h3,
+      ...TYPO.h3,
     },
     text: {
-      ...typo.p,
+      ...TYPO.p,
     },
   });
 };
