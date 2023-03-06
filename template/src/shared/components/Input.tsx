@@ -1,4 +1,10 @@
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {
   forwardRef,
   useImperativeHandle,
@@ -9,11 +15,10 @@ import { useTheme } from '~shared/hooks';
 import { AppText } from './AppText';
 import { COLOR } from '~shared/theme';
 
-interface IProps {
+interface IProps extends TextInputProps {
   label: string;
   icon?: React.ReactElement;
   onIconPress?: () => void;
-  secure?: boolean;
 }
 
 export interface CustomInputHandle {
@@ -23,7 +28,7 @@ export interface CustomInputHandle {
 
 export const CustomInput = forwardRef<CustomInputHandle, IProps>(
   (props, ref) => {
-    const { label, icon, onIconPress, secure } = props;
+    const { label, icon, onIconPress, ...inputProps } = props;
     const { color } = useTheme();
     const [invalid, setInvalid] = useState(false);
     const [invalidText, setInvalidText] = useState<string>();
@@ -63,7 +68,7 @@ export const CustomInput = forwardRef<CustomInputHandle, IProps>(
           <TextInput
             onChangeText={(text) => (inputRef.current = text)}
             style={{ ...styles.input, paddingRight: icon ? 4 : 0 }}
-            secureTextEntry={secure}
+            {...inputProps}
           />
           <TouchableOpacity onPress={onIconPress}>{icon}</TouchableOpacity>
         </View>
