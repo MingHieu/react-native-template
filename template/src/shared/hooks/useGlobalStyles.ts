@@ -28,7 +28,7 @@ const getGlobalStyles = (props: IGlobalStyleProps) => {
   });
 };
 
-export const useGlobalStyle = () => {
+export const useGlobalStyles = () => {
   const { color } = useAppSelector((state) => state.theme);
   const styles = React.useMemo(() => getGlobalStyles({ color }), [color]);
   return styles;
