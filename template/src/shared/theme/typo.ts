@@ -1,8 +1,16 @@
-import { TextStyle } from 'react-native';
+import { Platform, TextStyle } from 'react-native';
 
 export const fontTheme = {
-  primary: 'sans-serif',
-  secondary: 'sans-serif',
+  ...Platform.select({
+    ios: {
+      primary: 'System',
+      secondary: 'System',
+    },
+    android: {
+      primary: 'san-serif',
+      secondary: 'san-serif',
+    },
+  }),
 };
 
 export const TYPO = {
