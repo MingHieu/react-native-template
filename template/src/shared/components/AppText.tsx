@@ -7,17 +7,18 @@ interface IProps extends TextProps {
 }
 
 export const AppText: FC<IProps> = (props) => {
-  const { children, style } = props;
+  const { children, style, ...textProps } = props;
 
   return (
     <Text
       style={[
         {
+          fontSize: 16,
           fontFamily: fontTheme.primary,
         },
         ...(Array.isArray(style) ? style : [style]),
       ]}
-      {...props}
+      {...textProps}
     >
       {children}
     </Text>
