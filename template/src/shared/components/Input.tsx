@@ -60,14 +60,14 @@ export const CustomInput = forwardRef<CustomInputHandle, IProps>(
           {label}
         </AppText>
         <View
-          style={{
-            ...styles.inputContainer,
-            borderBottomColor: invalid ? COLOR.red : '#CDD1D0',
-          }}
+          style={[
+            styles.inputContainer,
+            { borderBottomColor: invalid ? COLOR.red : '#CDD1D0' },
+          ]}
         >
           <TextInput
             onChangeText={(text) => (inputRef.current = text)}
-            style={{ ...styles.input, paddingRight: icon ? 4 : 0 }}
+            style={[styles.input, { paddingRight: icon ? 4 : 0 }]}
             {...inputProps}
           />
           <TouchableOpacity onPress={onIconPress}>{icon}</TouchableOpacity>

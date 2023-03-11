@@ -14,7 +14,7 @@ const getGlobalStyles = (props: IGlobalStyleProps) => {
   const { color, insets } = props;
 
   return StyleSheet.create({
-    container: {
+    safeAreaContainer: {
       flex: 1,
       backgroundColor: color.background,
       // Paddings to handle safe area
@@ -22,6 +22,10 @@ const getGlobalStyles = (props: IGlobalStyleProps) => {
       paddingBottom: insets.bottom,
       paddingLeft: insets.left,
       paddingRight: insets.right,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: color.background,
     },
     title: {
       ...TYPO.h3,

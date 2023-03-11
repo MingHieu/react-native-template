@@ -23,10 +23,10 @@ export const CustomButton: FC<IProps> = (props) => {
       disabled={disabled}
     >
       <AppText
-        style={{
-          color: disabled ? '#797C7B' : color.on_primary,
-          ...styles.label,
-        }}
+        style={[
+          styles.label,
+          { color: disabled ? '#797C7B' : color.on_primary },
+        ]}
       >
         {label}
       </AppText>
