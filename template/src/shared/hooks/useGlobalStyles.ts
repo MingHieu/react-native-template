@@ -1,35 +1,57 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { IThemeColor } from '~types';
-import { useAppSelector } from './useAppSelector';
-import { TYPO } from '~shared/theme';
+import { TYPO } from '~shared/theme/index';
+import { useTheme } from './useTheme';
+import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface IGlobalStyleProps {
   color: IThemeColor;
+  insets: EdgeInsets;
 }
 
 const getGlobalStyles = (props: IGlobalStyleProps) => {
-  const { color } = props;
+  const { color, insets } = props;
 
   return StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: color.background,
+      // Paddings to handle safe area
+      paddingTop: insets.top,
+      paddingBottom: insets.bottom,
+      paddingLeft: insets.left,
+      paddingRight: insets.right,
     },
     title: {
-      ...TYPO.h2,
+      ...TYPO.h3,
     },
     label: {
-      ...TYPO.h3,
+      ...TYPO.h4,
     },
     text: {
       ...TYPO.p,
+    },
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.18,
+      shadowRadius: 1.0,
+      elevation: 1,
+      margin: 2,
     },
   });
 };
 
 export const useGlobalStyles = () => {
-  const { color } = useAppSelector((state) => state.theme);
-  const styles = React.useMemo(() => getGlobalStyles({ color }), [color]);
+  const { color } = useTheme();
+  const insets = useSafeAreaInsets();
+  const styles = React.useMemo(
+    () => getGlobalStyles({ color, insets }),
+    [color, insets]
+  );
   return styles;
 };

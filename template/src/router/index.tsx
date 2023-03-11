@@ -9,6 +9,8 @@ import {
   OutsideStackParamList,
   RootStackParamList,
 } from './types';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const OutsideStack = createNativeStackNavigator<OutsideStackParamList>();
 const OutsideRouter = () => {
@@ -19,10 +21,25 @@ const OutsideRouter = () => {
   );
 };
 
+const BottomTabIcons = {
+  Home: <FontAwesome name="home" size={23} />,
+};
+const BottomTabLabels = {
+  Home: 'Trang chủ',
+};
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const BottomRouter = () => {
+  const { color } = useTheme();
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarActiveTintColor: color.primary,
+        tabBarIcon: ({ color }) =>
+          React.cloneElement(BottomTabIcons[route.name], { color }),
+        tabBarLabel: BottomTabLabels[route.name],
+      })}
+    >
       <BottomTab.Screen name="Home" component={Home} />
     </BottomTab.Navigator>
   );
@@ -40,13 +57,22 @@ const InsideRouter = () => {
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 function AppRouter() {
   return (
-    <NavigationContainer>
-      <RootStack.Navigator>
-        <RootStack.Screen name={'SplashScreen'} component={SplashScreen} />
-        <RootStack.Screen name={'OutsideStack'} component={OutsideRouter} />
-        <RootStack.Screen name={'InsideStack'} component={InsideRouter} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <RootStack.Navigator>
+          <RootStack.Screen name={'SplashScreen'} component={SplashScreen} />
+          <RootStack.Screen name={'OutsideStack'} component={OutsideRouter} />
+          <RootStack.Screen
+            name={'InsideStack'}
+            component={InsideRouter}
+            options={{
+              headerShown: false,
+              gestureEnabled: false,
+            }}
+          />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
