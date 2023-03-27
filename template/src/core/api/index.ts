@@ -2,7 +2,7 @@ import { Request } from './api.service';
 import { GetParams } from './helpers';
 import { Endpoints } from './endpoints';
 
-const Api = {
+const API = {
   signup: (props: GetParams<Endpoints['auth/signup']['POST']>) =>
     Request.post('auth/signup', props),
 
@@ -10,4 +10,4 @@ const Api = {
     Request.post('auth/login', props),
 };
 
-export default Api;
+export default API;
