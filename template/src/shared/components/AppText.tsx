@@ -6,7 +6,7 @@ interface IProps extends TextProps {
   children: ReactNode;
 }
 
-export const AppText: FC<IProps> = (props) => {
+export const AppText: FC<IProps> = props => {
   const { children, style, ...textProps } = props;
 
   return (
@@ -18,8 +18,7 @@ export const AppText: FC<IProps> = (props) => {
         },
         ...(Array.isArray(style) ? style : [style]),
       ]}
-      {...textProps}
-    >
+      {...textProps}>
       {children}
     </Text>
   );

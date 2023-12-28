@@ -12,8 +12,7 @@ export const CustomHeader = () => {
       style={{
         paddingHorizontal: SIZE.PADDING_HORIZONTAL,
         paddingVertical: 16,
-      }}
-    >
+      }}>
       <Pressable onPress={() => navigation.goBack()}>
         <LeftArrow width={20} height={20} />
       </Pressable>

@@ -17,7 +17,8 @@
     },
     "noImplicitAny": false,
     "declaration": true,
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "forceConsistentCasingInFileNames": false
   },
   "exclude": [
     "node_modules",

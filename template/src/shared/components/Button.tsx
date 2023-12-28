@@ -9,9 +9,9 @@ interface IProps {
   disabled?: boolean;
 }
 
-export const CustomButton: FC<IProps> = (props) => {
+export const CustomButton: FC<IProps> = props => {
   const { label, onPress, disabled } = props;
-  const { color } = useAppSelector((state) => state.theme);
+  const { color } = useAppSelector(state => state.theme);
 
   return (
     <TouchableOpacity
@@ -20,14 +20,12 @@ export const CustomButton: FC<IProps> = (props) => {
         styles.container,
       ]}
       onPress={onPress}
-      disabled={disabled}
-    >
+      disabled={disabled}>
       <AppText
         style={[
           styles.label,
           { color: disabled ? '#797C7B' : color.on_primary },
-        ]}
-      >
+        ]}>
         {label}
       </AppText>
     </TouchableOpacity>

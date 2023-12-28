@@ -55,7 +55,7 @@ export const useGlobalStyles = () => {
   const insets = useSafeAreaInsets();
   const styles = React.useMemo(
     () => getGlobalStyles({ color, insets }),
-    [color, insets]
+    [color, insets],
   );
   return styles;
 };

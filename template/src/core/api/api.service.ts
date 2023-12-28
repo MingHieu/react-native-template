@@ -32,7 +32,7 @@ class ApiService {
       function (error) {
         // Do something with request error
         return Promise.reject(error);
-      }
+      },
     );
 
     // Add a response interceptor
@@ -46,14 +46,14 @@ class ApiService {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Do something with response error
         return Promise.reject(error);
-      }
+      },
     );
   }
 
   get<TPath extends PathFor<'GET'>>(
     url: TPath,
     queryParams?: OperationsByMethodAndPath<'GET', TPath>['queryParams'],
-    config: AxiosRequestConfig = {}
+    config: AxiosRequestConfig = {},
   ): AxiosPromise<OperationsByMethodAndPath<'GET', TPath>['result']> {
     return this.api({
       url: url,
@@ -67,7 +67,7 @@ class ApiService {
     url: TPath,
     params: OperationsByMethodAndPath<'POST', TPath>['params'],
     queryParams?: OperationsByMethodAndPath<'POST', TPath>['queryParams'],
-    config: AxiosRequestConfig = {}
+    config: AxiosRequestConfig = {},
   ): AxiosPromise<OperationsByMethodAndPath<'POST', TPath>['result']> {
     return this.api({
       url: url,

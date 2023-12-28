@@ -38,8 +38,7 @@ const BottomRouter = () => {
         tabBarIcon: ({ color }) =>
           React.cloneElement(BottomTabIcons[route.name], { color }),
         tabBarLabel: BottomTabLabels[route.name],
-      })}
-    >
+      })}>
       <BottomTab.Screen name="Home" component={Home} />
     </BottomTab.Navigator>
   );

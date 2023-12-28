@@ -63,10 +63,9 @@ export const CustomInput = forwardRef<CustomInputHandle, IProps>(
           style={[
             styles.inputContainer,
             { borderBottomColor: invalid ? COLOR.red : '#CDD1D0' },
-          ]}
-        >
+          ]}>
           <TextInput
-            onChangeText={(text) => (inputRef.current = text)}
+            onChangeText={text => (inputRef.current = text)}
             style={[styles.input, { paddingRight: icon ? 4 : 0 }]}
             {...inputProps}
           />
@@ -75,7 +74,7 @@ export const CustomInput = forwardRef<CustomInputHandle, IProps>(
         {invalid && <AppText style={styles.invalidText}>{invalidText}</AppText>}
       </View>
     );
-  }
+  },
 );
 
 const styles = StyleSheet.create({

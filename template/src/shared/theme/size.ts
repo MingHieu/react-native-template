@@ -5,8 +5,8 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const vw = SCREEN_WIDTH / 100;
 const vh = SCREEN_HEIGHT / 100;
-const _mvw = (w) => w * vw;
-const _mvh = (h) => h * vh;
+const _mvw = w => w * vw;
+const _mvh = h => h * vh;
 
 const PADDING_HORIZONTAL = 24;
 const MARGIN = 9;
@@ -20,5 +20,5 @@ export const SIZE = {
   MARGIN,
   CT_HEADER_HEIGHT,
   _mvw,
-  _mvh
+  _mvh,
 };

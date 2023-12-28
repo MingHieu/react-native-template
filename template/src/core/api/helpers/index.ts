@@ -12,7 +12,7 @@ type GetResult<T> = T extends (...args: any) => any ? ReturnType<T> : never;
 
 type Operations<
   TPath extends keyof Endpoints = keyof Endpoints,
-  TMethod extends KeyOfUnion<Endpoints[TPath]> = KeyOfUnion<Endpoints[TPath]>
+  TMethod extends KeyOfUnion<Endpoints[TPath]> = KeyOfUnion<Endpoints[TPath]>,
 > = TPath extends keyof Endpoints
   ? TMethod extends KeyOfUnion<Endpoints[TPath]>
     ? {
@@ -36,5 +36,5 @@ export type PathFor<TMethod extends Method> = Extract<
 
 export type OperationsByMethodAndPath<
   TMethod extends Method,
-  TPath extends PathFor<TMethod>
+  TPath extends PathFor<TMethod>,
 > = Extract<Operations, { path: TPath; method: TMethod }>;

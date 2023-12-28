@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IUser} from '~types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IUser } from '~types';
 
 const initialState: IUser = {
   username: '',
@@ -19,4 +19,4 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {setCurrentUser, setDefaultUser} = userSlice.actions;
+export const { setCurrentUser, setDefaultUser } = userSlice.actions;
