@@ -11,6 +11,7 @@ import {
 } from './types';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useTheme } from '~shared/hooks';
 
 const OutsideStack = createNativeStackNavigator<OutsideStackParamList>();
 const OutsideRouter = () => {
@@ -21,20 +22,20 @@ const OutsideRouter = () => {
   );
 };
 
-const BottomTabIcons = {
+const BottomTabIcons: { [key in keyof BottomTabParamList]: JSX.Element } = {
   Home: <FontAwesome name="home" size={23} />,
 };
-const BottomTabLabels = {
+const BottomTabLabels: { [key in keyof BottomTabParamList]: string } = {
   Home: 'Trang chủ',
 };
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const BottomRouter = () => {
-  const { color } = useTheme();
+  const { color: themeColor } = useTheme();
   return (
     <BottomTab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor: color.primary,
+        tabBarActiveTintColor: themeColor.primary,
         tabBarIcon: ({ color }) =>
           React.cloneElement(BottomTabIcons[route.name], { color }),
         tabBarLabel: BottomTabLabels[route.name],
